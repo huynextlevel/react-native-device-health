@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "react-native-device-health": ["./src/index"]
+      "@huynextlevel/react-native-device-health": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

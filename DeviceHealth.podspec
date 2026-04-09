@@ -16,5 +16,10 @@ Pod::Spec.new do |s|
   s.source_files = "ios/**/*.{h,m,mm,swift,cpp}"
   s.private_header_files = "ios/**/*.h"
 
+  s.pod_target_xcconfig = {
+    'DEFINES_MODULE' => 'YES',
+    'SWIFT_OPTIMIZATION_LEVEL' => '-Onone',
+  }
+
   install_modules_dependencies(s)
 end
