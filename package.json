@@ -1,13 +1,15 @@
 {
   "name": "@huynextlevel/react-native-device-health",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Native device health monitoring: CPU, memory, network stats, and speed test for React Native",
   "main": "./lib/module/index.js",
+  "react-native": "./lib/module/index.native.js",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {
     ".": {
-      "source": "./src/index.tsx",
       "types": "./lib/typescript/src/index.d.ts",
+      "react-native": "./lib/module/index.native.js",
+      "source": "./src/index.tsx",
       "default": "./lib/module/index.js"
     },
     "./package.json": "./package.json"

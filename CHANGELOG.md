@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.
 
 ## [Unreleased]
 
+## [1.0.2] — 2026-04-09
+
+### Fixed
+
+- **Module resolution on native platforms.** The `package.json` `exports` map did not declare a `react-native` condition, so consumer Metro instances could resolve the package to the web stub (`lib/module/index.js`) instead of the native bindings (`lib/module/index.native.js`). Calling any API would throw `'@huynextlevel/react-native-device-health' is only supported on native platforms.` even on iOS and Android.
+  - Added `"react-native": "./lib/module/index.native.js"` to the `exports` map, ordered before `source` so it wins on Metro resolvers that recognize the `source` condition.
+  - Added a top-level `"react-native"` field as a safety net for older Metro versions that do not process the `exports` map.
+
 ## [1.0.0] — 2026-04-09
 
 Initial public release of `@huynextlevel/react-native-device-health` — a TurboModule for the React Native New Architecture that exposes native device health and hardware introspection APIs on iOS and Android.
@@ -71,5 +79,6 @@ Initial public release of `@huynextlevel/react-native-device-health` — a Turbo
 - **`getChipset` is Android-only.** On iOS it returns an empty string; query Apple Silicon details via `utsname` if needed.
 - **TurboModule only.** This package does not support the legacy bridge — `TurboModuleRegistry.getEnforcing` will throw if the New Architecture is disabled.
 
-[Unreleased]: https://github.com/huynextlevel/react-native-device-health/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/huynextlevel/react-native-device-health/compare/v1.0.2...HEAD
+[1.0.2]: https://github.com/huynextlevel/react-native-device-health/compare/v1.0.0...v1.0.2
 [1.0.0]: https://github.com/huynextlevel/react-native-device-health/releases/tag/v1.0.0
